@@ -15,7 +15,11 @@ function generateMap(size: number):TileType[][]{
     for(let r = 0; r < size; r++){
         let line:TileType[] = []
         for(let c = 0; c < size; c++){
-            line.push({building: null, ground: "water", resource: null})
+            line.push({
+                building: null,
+                ground: "water", 
+                resource: null
+            })
         }
         tempMap.push(line)
     }
