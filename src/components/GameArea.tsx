@@ -8,7 +8,7 @@ const GameArea = () => {
       gridTemplateColumns: `repeat(${gameMap.length}, 1fr)`
     }}>
       {gameMap.map(row => 
-        row.map(tile => <div className={tile.ground}>a</div>))
+        row.map(tile => <div className={tile.ground}></div>))
       }
     </div>
   )
