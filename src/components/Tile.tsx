@@ -1,5 +1,5 @@
 import { useState } from "react"
-import type { TileType } from "../types/Map"
+import type { BuildingType, TileType } from "../types/Map"
 import { useMapStore } from "../store/useMapStore"
 
 type TilePropsType = {
@@ -12,9 +12,9 @@ const Tile = ({tile,colIdx,rowIdx}:TilePropsType) => {
 
   const selectedBuilding = useMapStore((state) => state.selectedBuilding)
 
-  const buildingIcon = () => {
+  const buildingIcon = (building: BuildingType) => {
     let icon = "";
-    switch (tile.building) {
+    switch (building) {
       case "farm":
         icon = "🛖"; break;
       case "house":
@@ -28,7 +28,7 @@ const Tile = ({tile,colIdx,rowIdx}:TilePropsType) => {
     return icon;
   }
 
-  const [building] = useState(buildingIcon())
+  const [building, setBuilding] = useState<BuildingType | null>(null)
 
   const canBuild = () => {
     if(tile.building || selectedBuilding == null) return false
@@ -43,7 +43,7 @@ const Tile = ({tile,colIdx,rowIdx}:TilePropsType) => {
   }
 
   const build = () => {
-    canBuild() ? alert(`${selectedBuilding} építése a ${rowIdx}|${colIdx} helyre!`) : alert("Nem lehet építeni!")
+    canBuild() ? setBuilding(selectedBuilding) : alert("Nem lehet építeni!")
   }
 
   const hoverTile = (e: React.MouseEvent) => {
@@ -59,7 +59,7 @@ const Tile = ({tile,colIdx,rowIdx}:TilePropsType) => {
 
   return (
     <div onMouseOver={(e)=>hoverTile(e)} onMouseLeave={(e)=>leaveTile(e)} onClick={build} className={tile.ground} title={`${rowIdx}|${colIdx}`}>
-      {building}
+      {building && buildingIcon(building)}
     </div>
   )
 }
