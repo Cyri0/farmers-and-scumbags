@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { mapQueryOptions } from "../store/mapQueryOptions"
+import Tile from "./Tile"
 
 const GameArea = () => {
 
@@ -11,8 +12,8 @@ const GameArea = () => {
     <div className="gameArea" style={{
       gridTemplateColumns: `repeat(${data?.length}, 1fr)`
     }}>
-      {data?.map(row => 
-        row.map(tile => <div className={tile.ground}></div>))
+      {data?.map((row, rowIdx) => 
+        row.map((tile, colIdx) => <Tile tile={tile} rowIdx={rowIdx} colIdx={colIdx} />))
       }
     </div>
   )
