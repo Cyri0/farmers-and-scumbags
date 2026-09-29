@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import GameArea from "./components/GameArea"
 import ResourceBar from "./components/ResourceBar"
-import { Suspense } from "react"
 
 const queryClient = new QueryClient()
 
@@ -11,9 +10,9 @@ const App = () => {
     <div>
       <ResourceBar />
       
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Suspense fallback={<div>Loading...</div>}> */}
         <GameArea/>
-      </Suspense>
+      {/* </Suspense> */}
 
     </div>
     </QueryClientProvider>

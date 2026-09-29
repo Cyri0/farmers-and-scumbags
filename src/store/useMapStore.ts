@@ -1,11 +1,13 @@
 import { create } from "zustand"
 import type { TileType } from "../types/Map"
+import { useQuery } from "@tanstack/react-query"
+import { mapQueryOptions } from "./mapQueryOptions"
 
 type MapStoreType = {
-    map: TileType[][]
+    map: TileType[][] | undefined
 }
 
-export const useMapStore = create<MapStoreType>((set)=>({
+export const useMapStore = create<MapStoreType>(()=>({
     map: generateMap(50,50)
 }))
 
