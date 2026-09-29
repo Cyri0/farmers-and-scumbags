@@ -17,3 +17,7 @@
 .grass{ background: rgb(22, 136, 26);  }
 .stone{ background: rgb(56, 64, 77); }
 .sand{ background: rgb(200, 167, 100); }
+
+.selectorButton{
+  font-size: 2rem;
+}
