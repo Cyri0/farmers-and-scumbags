@@ -13,7 +13,7 @@ const ResourceBar = () => {
       <div>{wood}🪵</div>
       <div>{stone}🪨</div>
       <div>{food}🥖</div>
-      <div>{people}👨‍🌾🤰</div>
+      <div>{people}🫃</div>
     </div>
   )
 }

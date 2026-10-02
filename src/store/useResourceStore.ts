@@ -20,7 +20,6 @@ export const useResourceStore = create<ResourceStoreType>((set)=>({
     wood: 0,
     stone: 0,
     food: 0,
-    people: 0,
 
     spendGold: (amount: number) => { 
         if(amount > 0 && amount <= useResourceStore.getState().gold) {
