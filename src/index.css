@@ -15,7 +15,7 @@
 
 .water{ background: rgb(22, 65, 136); }
 .grass{ background: rgb(22, 136, 26);  }
-.stone{ background: url(/src/37551641.jpg); background-size: cover; }
+.stone{ background: gray;}
 .sand{ background: rgb(200, 167, 100); }
 
 .selectorButton{
