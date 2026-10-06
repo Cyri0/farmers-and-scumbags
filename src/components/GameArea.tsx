@@ -13,7 +13,7 @@ const GameArea = () => {
       gridTemplateColumns: `repeat(${data?.length}, 1fr)`
     }}>
       {data?.map((row, rowIdx) => 
-        row.map((tile, colIdx) => <Tile tile={tile} rowIdx={rowIdx} colIdx={colIdx} />))
+        row.map((tile, colIdx) => <Tile key={`${rowIdx}-${colIdx}`} tile={tile} rowIdx={rowIdx} colIdx={colIdx} />))
       }
     </div>
   )

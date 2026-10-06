@@ -14,49 +14,56 @@ type ResourceStoreType = {
 
     addResource: (type: ResourceType, amount: number) => void,
     spendResource: (type: ResourceType, amount: number) => boolean,
+
+    buildABuilding: (building: BuildingDataType) => boolean
 }
 
-export const useResourceStore = create<ResourceStoreType>((set)=>({
+export const useResourceStore = create<ResourceStoreType>((set) => ({
     gold: 1000,
-    wood: 0,
-    stone: 0,
-    food: 0,
+    wood: 100,
+    stone: 50,
+    food: 50,
     people: 0,
 
-    spendGold: (amount: number) => { 
-        if(amount > 0 && amount <= useResourceStore.getState().gold) {
+    spendGold: (amount: number) => {
+        if (amount > 0 && amount <= useResourceStore.getState().gold) {
             set((state) => ({ gold: state.gold - amount }));
             return true;
         }
         return false;
     },
+
     receiveGold: (amount: number) => { set((state) => ({ gold: state.gold + amount })) },
 
     addResource: (type: ResourceType, amount: number) => { set((state) => ({ [type]: state[type] + amount })) },
 
-    spendResource: (type: ResourceType, amount: number) => { 
-        if(amount > 0 && amount <= useResourceStore.getState()[type]) {
+    spendResource: (type: ResourceType, amount: number) => {
+        if (amount > 0 && amount <= useResourceStore.getState()[type]) {
             set((state) => ({ [type]: state[type] - amount }));
+            return true;
+        }
+        return false;
+    },
+
+    buildABuilding: (building: BuildingDataType): boolean => {
+        const state = useResourceStore.getState();
+        const cost = building.cost;
+        
+        if ((!cost.food || cost.food <= state.food) &&
+            (!cost.wood || cost.wood <= state.wood) &&
+            (!cost.stone || cost.stone <= state.stone) &&
+            (!cost.people || cost.people <= state.people) &&
+            (!cost.gold || cost.gold <= state.gold)
+        ) {
+            if (cost.food) state.spendResource("food", cost.food)
+            if (cost.wood) state.spendResource("wood", cost.wood)
+            if (cost.stone) state.spendResource("stone", cost.stone)
+            if (cost.people) state.spendResource("people", cost.people)
+            if (cost.gold) state.spendGold(cost.gold)
+
+            // TODO: Reward
             return true;
         }
         return false;
     }
 }))
-
-export function buildABuilding(building: BuildingDataType):boolean{
-    if(building.cost.food && building.cost.food <= useResourceStore().food &&
-       building.cost.wood && building.cost.wood <= useResourceStore().wood &&
-       building.cost.stone && building.cost.stone <= useResourceStore().stone &&
-       building.cost.people && building.cost.people <= useResourceStore().people &&
-       building.cost.gold && building.cost.gold <= useResourceStore().gold
-    ){
-        if(building.cost.food) useResourceStore().spendResource("food", building.cost.food)
-        if(building.cost.wood) useResourceStore().spendResource("wood", building.cost.wood)
-        if(building.cost.stone) useResourceStore().spendResource("stone", building.cost.stone)
-        if(building.cost.people) useResourceStore().spendResource("people", building.cost.people)
-        if(building.cost.gold) useResourceStore().spendGold(building.cost.gold)
-        return true;
-    }
-
-    return false;
-}
