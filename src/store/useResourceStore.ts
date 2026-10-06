@@ -43,6 +43,20 @@ export const useResourceStore = create<ResourceStoreType>((set)=>({
     }
 }))
 
-export function buildABuilding(building: BuildingDataType){
-    
+export function buildABuilding(building: BuildingDataType):boolean{
+    if(building.cost.food && building.cost.food <= useResourceStore().food &&
+       building.cost.wood && building.cost.wood <= useResourceStore().wood &&
+       building.cost.stone && building.cost.stone <= useResourceStore().stone &&
+       building.cost.people && building.cost.people <= useResourceStore().people &&
+       building.cost.gold && building.cost.gold <= useResourceStore().gold
+    ){
+        if(building.cost.food) useResourceStore().spendResource("food", building.cost.food)
+        if(building.cost.wood) useResourceStore().spendResource("wood", building.cost.wood)
+        if(building.cost.stone) useResourceStore().spendResource("stone", building.cost.stone)
+        if(building.cost.people) useResourceStore().spendResource("people", building.cost.people)
+        if(building.cost.gold) useResourceStore().spendGold(building.cost.gold)
+        return true;
+    }
+
+    return false;
 }
