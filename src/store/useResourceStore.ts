@@ -61,7 +61,13 @@ export const useResourceStore = create<ResourceStoreType>((set) => ({
             if (cost.people) state.spendResource("people", cost.people)
             if (cost.gold) state.spendGold(cost.gold)
 
-            // TODO: Reward
+            if(building.reward != undefined) {
+                const reward = Object.entries(building.reward) as [ResourceType, number][];
+                
+                reward.forEach((r) => {
+                    state.addResource(r[0] , r[1])
+                })
+            }
             return true;
         }
         return false;
