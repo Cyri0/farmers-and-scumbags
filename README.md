@@ -1,75 +1,45 @@
-# React + TypeScript + Vite
+# 🌾 Farmers And Scumbags
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### React Internetes Játék — Fejlesztési Jelentés
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📋 Projektstátusz
 
-## React Compiler
+> **Állapot: A fejlesztés folytatása nem javasolt.**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+A *Farmers And Scumbags* egy ambiciózus, React-alapú internetes játékprojektnek indult. A fejlesztés során azonban olyan technikai kihívásokkal szembesültem, amelyek jelentősen meghaladták az előzetes várakozásaimat.
 
-## Expanding the ESLint configuration
+## 🧠 Technikai kihívások
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+A projekt kódolása a vártnál lényegesen összetettebb feladatnak bizonyult. A komponensek, az állapotkezelés és a különböző játékmechanikák implementálása olyan szintű szellemi erőfeszítést igényel, amely jelenlegi képességeimet meghaladja.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Hosszas mérlegelés után arra a következtetésre jutottam, hogy a projekt sikeres befejezése jelen körülmények között nem reális célkitűzés.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📉 Végső értékelés
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Szempont                    | Értékelés    |
+| --------------------------- | ------------ |
+| Projektötlet                | ⭐⭐⭐⭐⭐        |
+| Technikai nehézség          | 💀💀💀💀💀   |
+| Fejlesztő mentális állapota | Kritikus     |
+| Reacttel való kapcsolat     | Megromlott   |
+| Folytatás esélye            | Nem ajánlott |
 
-```
+## 🛑 Hivatalos állásfoglalás
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+A fentiek alapján a *Farmers And Scumbags* fejlesztésének folytatását **nem javaslom**.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+A projekt túlnőtt a jelenlegi programozási tudásomon, és elérkezett az a pont, ahol be kell látnom: nem minden szoftveres kihívás győzhető le pusztán akaraterővel és néhány Stack Overflow-bejegyzéssel.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Ezúton köszönöm mindenkinek, aki hitt a projektben.
 
-```
+Külön köszönet illeti **Nemes Tamást**, akinek ezúton is szeretném jelezni, hogy a React fejlesztési környezet és az emberi intelligencia határai között sajnálatos módon jelentős különbség mutatkozott.
+
+---
+
+### 🪦 Nyugodjon békében a projekt.
+
+*Made with React, ambition, and an unfortunate amount of suffering.*
+
+**A fejlesztés hivatalosan nem ajánlott.**
