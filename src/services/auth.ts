@@ -36,3 +36,13 @@ export async function loginUser(username: string, password: string): Promise<Log
         throw new Error('Failed to login user');
     }
 }
+
+export async function getMe(){
+    try {
+        const response = await scumbagAPI.get('/api/auth/me/')
+        const userData = response.data as {id: number, username: string, email: string}
+        return userData
+    } catch (error) {
+        throw new Error('No User Data Very Sad 🥀');
+    }
+}
